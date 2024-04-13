@@ -1,10 +1,10 @@
-# lib-mm-template
+# lib-devtools
 
-Team33 Template Library Collection
+Team33 Development Tools Library Collection
 
 ## Home
 
-http://www.team33.de/dev/template/1.x
+http://www.team33.de/dev/devtools/1.x
 
 ## Requires
 
@@ -12,22 +12,22 @@ http://www.team33.de/dev/template/1.x
 
 ## Artifacts
 
-* template-bom (Team33 Template Library BOM)
-* template-lib (Team33 Template Library)
-  * template-module-alpha (Team33 Module-A Library - Edition "alpha")
-  * template-module-beta (Team33 Module-A Library - Edition "beta")
-  * template-module-gamma (Team33 Module-A Library - Edition "gamma")
+* devtools-bom (Team33 Development Tools Library BOM)
+* devtools-lib (Team33 Development Tools Library)
+  * devtools-module-alpha (Team33 Development Tools Module Library - Edition "alpha")
+  * devtools-module-beta (Team33 Development Tools Module Library - Edition "beta")
+  * devtools-module-gamma (Team33 Development Tools Module Library - Edition "gamma")
 
 ## Change Log
 
 ### 1.0.0-SNAPSHOT
 
 Created ...
-* template-root (Team33 Template Library Root)
-  * template-bom (Team33 Template Library BOM)
-  * template-home (Team33 Template Library Home)
-  * template-lib (Team33 Template Library)
-    * template-module-alpha (Team33 Module-A Library - Edition "alpha")
-    * template-module-beta (Team33 Module-A Library - Edition "beta")
-    * template-module-gamma (Team33 Module-A Library - Edition "gamma")
+* devtools-root (Team33 Development Tools Library Root)
+  * devtools-bom (Team33 Development Tools Library BOM)
+  * devtools-home (Team33 Development Tools Library Home)
+  * devtools-lib (Team33 Development Tools Library)
+    * devtools-module-alpha (Team33 Development Tools Module Library - Edition "alpha")
+    * devtools-module-beta (Team33 Development Tools Module Library - Edition "beta")
+    * devtools-module-gamma (Team33 Development Tools Module Library - Edition "gamma")
 
