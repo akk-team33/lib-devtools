@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static de.team33.devtools.buildable.luna.GeneratorUtil.separated;
+
 public class BuildableGenerator {
 
     private static final String NEWLINE = String.format("%n");
@@ -29,13 +31,15 @@ public class BuildableGenerator {
         return new BuildableGenerator(doClass);
     }
 
+    private Stream<Field> fields() {
+        return Stream.of(doClass.getDeclaredFields());
+    }
+
     public final String javaCode() {
         final List<String> lines = //
                 Collecting.builder(() -> new LinkedList<String>())
-                          .add(String.format("package %s", doClass.getPackage().getName()))
-                          .add("")
+                          .addAll(packageCode())
                           .addAll(importCode())
-                          .add("")
                           .add(String.format("public class %s {", doClass.getSimpleName()))
                           .add("")
                           .addAll(fieldCode())
@@ -44,23 +48,23 @@ public class BuildableGenerator {
         return String.join(NEWLINE, lines);
     }
 
+    private Collection<String> importCode() {
+        return separated(fields().map(Field::getType)
+                                 .filter(this::isNotStdPackage)
+                                 .distinct()
+                                 .map(Class::getCanonicalName)
+                                 .sorted()
+                                 .map(name -> String.format("import %s;", name))
+                                 .collect(Collectors.toList()));
+    }
+
+    private Collection<String> packageCode() {
+        return separated(String.format("package %s;", doClass.getPackage().getName()));
+    }
+
     private Collection<String> fieldCode() {
         return Collecting.builder(() -> new LinkedList<String>())
                          .build();
-    }
-
-    private Stream<Field> fields() {
-        return Stream.of(doClass.getDeclaredFields());
-    }
-
-    private List<String> importCode() {
-        return fields().map(Field::getType)
-                       .filter(this::isNotStdPackage)
-                       .distinct()
-                       .map(Class::getCanonicalName)
-                       .sorted()
-                       .map(name -> String.format("import %s;", name))
-                       .collect(Collectors.toList());
     }
 
     private boolean isNotStdPackage(final Class<?> type) {
