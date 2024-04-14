@@ -15,7 +15,7 @@
     <description>Parent of Team33 Development Tools library collection</description>
 
     <modules>
-        <module>devtools-module-alpha</module>
+        <module>buildable-luna</module>
         <module>devtools-module-beta</module>
         <module>devtools-module-gamma</module>
     </modules>

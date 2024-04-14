@@ -14,7 +14,7 @@ http://www.team33.de/dev/devtools/1.x
 
 * devtools-bom (Team33 Development Tools Library BOM)
 * devtools-lib (Team33 Development Tools Library)
-  * devtools-module-alpha (Team33 Development Tools Module Library - Edition "alpha")
+  * buildable-luna (Team33 Buildable Development Tool - Edition "Luna")
   * devtools-module-beta (Team33 Development Tools Module Library - Edition "beta")
   * devtools-module-gamma (Team33 Development Tools Module Library - Edition "gamma")
 
@@ -27,7 +27,7 @@ Created ...
   * devtools-bom (Team33 Development Tools Library BOM)
   * devtools-home (Team33 Development Tools Library Home)
   * devtools-lib (Team33 Development Tools Library)
-    * devtools-module-alpha (Team33 Development Tools Module Library - Edition "alpha")
+    * buildable-luna (Team33 Buildable Development Tool - Edition "Luna")
     * devtools-module-beta (Team33 Development Tools Module Library - Edition "beta")
     * devtools-module-gamma (Team33 Development Tools Module Library - Edition "gamma")
 

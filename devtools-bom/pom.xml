@@ -22,7 +22,7 @@
         <dependencies>
             <dependency>
                 <groupId>de.team33.devtools</groupId>
-                <artifactId>devtools-module-alpha</artifactId>
+                <artifactId>buildable-luna</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

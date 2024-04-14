@@ -8,11 +8,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>devtools-module-alpha</artifactId>
+    <artifactId>buildable-luna</artifactId>
     <packaging>jar</packaging>
 
-    <name>Team33 Development Tools Module Library - Edition "alpha"</name>
-    <description>Classes and utilities for implementing and handling builders.</description>
+    <name>Team33 Buildable Development Tool - Edition "Luna"</name>
+    <description>Tools for generating buildable immutable data object classes.</description>
 
     <properties>
         <!-- preliminary ... -->
