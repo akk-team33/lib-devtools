@@ -71,8 +71,26 @@ public class BuildableGenerator {
                          EMPTY_LINE);
     }
 
-    private Stream<String> classBodyLines() {
+    private Stream<String> classFieldsLines() {
+        return fields().map(field -> String.format("    private %s %s;",
+                                                   field.getType().getSimpleName(),
+                                                   field.getName()));
+    }
+
+    private Stream<String> classMethodsLines() {
         return Stream.empty(); // TODO
+    }
+
+    private Stream<String> classBuilderLines() {
+        return Stream.empty(); // TODO
+    }
+
+    private Stream<String> classBodyLines() {
+        return Stream.of(classFieldsLines(),
+                         classMethodsLines(),
+                         classBuilderLines())
+                     .reduce(Stream::concat)
+                     .orElseGet(Stream::empty);
     }
 
     private Stream<String> classClosingLines() {

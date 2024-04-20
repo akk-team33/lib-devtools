@@ -27,11 +27,11 @@ class BuildableGeneratorTest {
             "%n" +
             "public class SampleDO {%n" +
             "%n" +
-            "    int intValue;%n" +
-            "    String stringValue;%n" +
-            "    Double doubleValue;%n" +
-            "    BigInteger bigIntegerValue;%n" +
-            "    Instant instantValue;%n" +
+            "    private int intValue;%n" +
+            "    private String stringValue;%n" +
+            "    private Double doubleValue;%n" +
+            "    private BigInteger bigIntegerValue;%n" +
+            "    private Instant instantValue;%n" +
             "}";
 
     @ParameterizedTest
