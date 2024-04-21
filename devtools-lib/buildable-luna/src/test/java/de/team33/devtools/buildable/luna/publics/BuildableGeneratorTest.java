@@ -6,8 +6,10 @@ import de.team33.devtools.buildable.luna.sample.SampleDO;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import static de.team33.patterns.exceptional.dione.Conversion.supplier;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BuildableGeneratorTest {
@@ -18,6 +20,13 @@ class BuildableGeneratorTest {
             "%n" +
             "public class EmptyDO {%n" +
             "%n" +
+            "}";
+    private static final String EXPECTED_NO_PACKAGE_DO = //
+            "public class NoPackageDO {%n" +
+            "%n" +
+            "    private int intValue;%n" +
+            "    private String stringValue;%n" +
+            "    private Double doubleValue;%n" +
             "}";
     private static final String EXPECTED_SAMPLE_DO = //
             "package de.team33.devtools.buildable.luna.sample;%n" +
@@ -37,7 +46,7 @@ class BuildableGeneratorTest {
     @ParameterizedTest
     @EnumSource
     final void javaCodeLines(final JavaCodeLinesCase testCase) {
-        final String result = BuildableGenerator.of(testCase.doClass)
+        final String result = BuildableGenerator.of(testCase.doClass.get())
                                                 .javaCodeLines()
                                                 .collect(Collectors.joining(NEW_LINE));
         assertEquals(testCase.expected, result);
@@ -45,13 +54,14 @@ class BuildableGeneratorTest {
 
     private enum JavaCodeLinesCase {
 
-        EMPTY_DO(EmptyDO.class, EXPECTED_EMPTY_DO),
-        SAMPLE_DO(SampleDO.class, EXPECTED_SAMPLE_DO);
+        EMPTY_DO(() -> EmptyDO.class, EXPECTED_EMPTY_DO),
+        NO_PACKAGE_DO(supplier(() -> Class.forName("NoPackageDO")), EXPECTED_NO_PACKAGE_DO),
+        SAMPLE_DO(() -> SampleDO.class, EXPECTED_SAMPLE_DO);
 
-        private final Class<?> doClass;
+        private final Supplier<Class<?>> doClass;
         private final String expected;
 
-        JavaCodeLinesCase(final Class<?> doClass, final String expected) {
+        JavaCodeLinesCase(final Supplier<Class<?>> doClass, final String expected) {
             this.doClass = doClass;
             this.expected = String.format(expected);
         }
