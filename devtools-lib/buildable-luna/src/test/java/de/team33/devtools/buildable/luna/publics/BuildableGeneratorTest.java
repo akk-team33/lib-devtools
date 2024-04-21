@@ -52,6 +52,7 @@ class BuildableGeneratorTest {
         assertEquals(testCase.expected, result);
     }
 
+    @SuppressWarnings("unused")
     private enum JavaCodeLinesCase {
 
         EMPTY_DO(() -> EmptyDO.class, EXPECTED_EMPTY_DO),
