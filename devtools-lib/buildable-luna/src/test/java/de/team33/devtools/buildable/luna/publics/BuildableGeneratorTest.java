@@ -19,7 +19,6 @@ class BuildableGeneratorTest {
             "package de.team33.devtools.buildable.luna.sample;%n" +
             "%n" +
             "public class EmptyDO {%n" +
-            "%n" +
             "}";
     private static final String EXPECTED_NO_PACKAGE_DO = //
             "public class NoPackageDO {%n" +

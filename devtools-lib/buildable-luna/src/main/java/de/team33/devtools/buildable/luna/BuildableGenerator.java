@@ -67,14 +67,26 @@ public class BuildableGenerator {
     }
 
     private Stream<String> classHeadLines() {
-        return Stream.of(String.format("public class %s {", doClass.getSimpleName()),
-                         EMPTY_LINE);
+        return Stream.of(String.format("public class %s {", doClass.getSimpleName()));
+    }
+
+    private static String classFieldLine(final Field field) {
+        return String.format("    private %s %s;",
+                             field.getType().getSimpleName(),
+                             field.getName());
     }
 
     private Stream<String> classFieldsLines() {
-        return fields().map(field -> String.format("    private %s %s;",
-                                                   field.getType().getSimpleName(),
-                                                   field.getName()));
+        return Collecting.builder(() -> new LinkedList<String>())
+                         .add(EMPTY_LINE)
+                         .addAll(fields().map(BuildableGenerator::classFieldLine))
+                         .setup(list -> {
+                             if (1 == list.size()) {
+                                 list.clear();
+                             }
+                         })
+                         .build()
+                         .stream();
     }
 
     private Stream<String> classMethodsLines() {
